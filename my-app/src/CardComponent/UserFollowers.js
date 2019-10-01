@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
 
-class CardComponent extends Component{
+class UserFollowers extends Component{
         
     render(){
-        const { card } = this.props;
+        // const { card } = this.props;
         return(
             <div>
-                {card.map((card) => (
+                {this.props.card.map((card) => (
                 <div className='card' key={card.id}>
                     <div className='cardImg'>
                         <img src ={card.avatar_url} alt='My Face' /> 
@@ -30,4 +30,4 @@ class CardComponent extends Component{
 }
 
 
-export default CardComponent;
+export default UserFollowers;
