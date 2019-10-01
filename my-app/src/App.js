@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css'
+import CardComponent from './CardComponent/CardComponent';
 
 const gitHubApi = 'https://api.github.com/users/Martins-O-U';
 
@@ -13,27 +14,24 @@ export default class Todos extends React.Component {
     };
   }
 
-  // useEffect(() => {
-  //   axios.get(todosApi).then(res => setTodos(res.data));
-  // }, []);
   componentDidMount() {
     axios.get(gitHubApi)
       .then(res => {
-        debugger
+        // debugger
         console.log(res.data)
         this.setState({ todos:[res.data] });
     });
-    debugger
+    // debugger
   }
 
   render() {
     return (
-      <div className='component'>
-        {
-          this.state.todos.map((todo) => (
-            <div key={todo.id}>
-              {todo.login}
-            </div>
+      <div className='card'>
+        { this.state.todos.map((todo) => (
+          <CardComponent card={todo}/>
+            // <div key={todo.id}>
+            //   {todo.login}
+            // </div>
           ))
         }
       </div>
