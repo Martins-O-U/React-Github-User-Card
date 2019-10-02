@@ -18,14 +18,14 @@ export default class Todos extends React.Component {
   }
 
   componentDidMount() {
-    const me = axios.get(gitHubApi);
-    const others = axios.get(followersApi);
-    Promise.all([me, others])
+    const self = axios.get(gitHubApi);
+    const followers = axios.get(followersApi);
+    Promise.all([self, followers])
 
-      .then(([meRes, othersRes]) => {
+      .then(([selfRes, followersRes]) => {
         this.setState({ 
-          user: [meRes.data],
-          follower: othersRes.data, 
+          user: [selfRes.data],
+          follower: followersRes.data, 
         });
     });
 
@@ -34,7 +34,9 @@ export default class Todos extends React.Component {
   render() {
     return (
       <div className='container'>
+        <h1>My GitHub card</h1>
         <CardComponent card={this.state.user}/>
+        <h3>Below are some of Sammy's followers</h3>
         <UserFollowers card={this.state.follower} />
       </div>
     );
