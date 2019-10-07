@@ -34,7 +34,7 @@ export default class Todos extends React.Component {
   render() {
     return (
       <div className='container'>
-        <h1>My GitHub card</h1>
+        <h1 className='intro'>My GitHub card</h1>
         <CardComponent card={this.state.user}/>
         <h3>Below are some of Sammy's followers</h3>
         <UserFollowers card={this.state.follower} />
